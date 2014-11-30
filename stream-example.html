@@ -12,8 +12,8 @@
 		#videoCanvas {
 			/* Always stretch the canvas to 640x480, regardless of its
 			internal size. */
-			width: 640px;
-			height: 480px;
+			width: 320;
+			height: 240;
 		}
 	</style>
 </head>
@@ -22,7 +22,15 @@
 		change this internal resolution to whatever the source provides. The size the
 		canvas is displayed on the website is dictated by the CSS style.
 	-->
-	<canvas id="videoCanvas" width="640" height="480">
+	<canvas id="videoCanvas" width="320" height="240">
+		<p>
+			Please use a browser that supports the Canvas Element, like
+			<a href="http://www.google.com/chrome">Chrome</a>,
+			<a href="http://www.mozilla.com/firefox/">Firefox</a>,
+			<a href="http://www.apple.com/safari/">Safari</a> or Internet Explorer 10
+		</p>
+	</canvas>
+	<canvas id="videoCanvas2" width="320" height="240">
 		<p>
 			Please use a browser that supports the Canvas Element, like
 			<a href="http://www.google.com/chrome">Chrome</a>,
@@ -34,13 +42,19 @@
 	<script type="text/javascript">
 		// Show loading notice
 		var canvas = document.getElementById('videoCanvas');
+		var canvas2 = document.getElementById('videoCanvas2');
 		var ctx = canvas.getContext('2d');
+		var ctx2 = canvas2.getContext('2d');
 		ctx.fillStyle = '#444';
 		ctx.fillText('Loading...', canvas.width/2-30, canvas.height/3);
+		ctx2.fillStyle = '#444';
+		ctx2.fillText('Loading...', canvas.width/2-30, canvas.height/3);
 
 		// Setup the WebSocket connection and start the player
-		var client = new WebSocket( 'ws://example.com:8084/' );
+		var client = new WebSocket( 'ws://133.242.160.150:8084/' );
+		var client2 = new WebSocket( 'ws://133.242.160.150:8085/' );
 		var player = new jsmpeg(client, {canvas:canvas});
+		var player2 = new jsmpeg(client2, {canvas:canvas2});
 	</script>
 </body>
 </html>
