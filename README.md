@@ -29,7 +29,8 @@ Mac
 ffmpeg -f qtkit -i "default" -f mpeg1video  -s 320x240 -b:v 200k  -minrate 200k -maxrate 200k -bufsize 1000k -r 30 http://VPS_ADDRESS:8082/yourpassword/320/240/
 ```
 
-
+#### 動画
+<a href="https://www.youtube.com/watch?v=DmIijp_C3Xc"><img src="screenshot.png" /></a>
 
 jsmpeg
 ==========
