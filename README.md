@@ -1,3 +1,36 @@
+# デモの使い方
+
+#### 1. VPSサーバ上でWebsocketサーバを立ち上げる
+
+```
+$ node stream-server.js
+```
+
+#### 2. Apacheなり何らかのサーバでstream-example.htmlをホストする
+（わからなければ、Python2の組み込みサーバが簡単）
+
+```
+$ python -m SimpleHTTPServer 
+```
+で、<VPS_ADDRESS>:8000　上にサーバが起動する。
+
+#### 3. RPi（あるいはMac）でffmpegを起動する
+Rpi
+
+```
+ffmpeg -s 320x240 -f video4linux2 -i /dev/video0 -f mpeg1video \
+-b 200k -r 30 http://VPS_ADDRESS:8082/yourpassword/320/240/
+
+```
+
+Mac
+
+```
+ffmpeg -f qtkit -i "default" -f mpeg1video  -s 320x240 -b:v 200k  -minrate 200k -maxrate 200k -bufsize 1000k -r 30 http://VPS_ADDRESS:8082/yourpassword/320/240/
+```
+
+
+
 jsmpeg
 ==========
 
